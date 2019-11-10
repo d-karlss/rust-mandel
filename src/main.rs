@@ -3,23 +3,6 @@ extern crate image;
 #[cfg(target_arch = "x86_64")]
 
 use std::arch::x86_64::*;
-use std::alloc::{alloc, Layout};
-use std::{f64, mem};
-
-unsafe fn print_pd(s : &str, pd : __m256d, bit : bool) {
-    let align = 256;
-    let size = mem::size_of::<f64>();
-    let layout = Layout::from_size_align_unchecked(size*4, align);
-
-    let mem = alloc(layout) as *mut f64;
-    _mm256_store_pd(mem,pd);
-    let slice =  std::slice::from_raw_parts_mut(mem, 4);
-    if bit {
-        println!("{} : {:x?} {:x?} {:x?} {:x?}", s, slice[0].to_bits(), slice[1].to_bits(), slice[2].to_bits(), slice[3].to_bits());
-    } else {
-        println!("{} : {:x?} {:x?} {:x?} {:x?}", s, slice[0], slice[1], slice[2], slice[3]);
-    }
-}
 
 #[inline]
 #[target_feature(enable = "avx")]
