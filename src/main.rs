@@ -81,7 +81,7 @@ fn main() {
 
 #[target_feature(enable = "avx")]
 unsafe fn unsafe_main() {
-    const IMG_SIDE : u32 = 1024u32;
+    const IMG_SIDE : u32 = 2048u32;
     const CXMIN : f64 = -2f64;
     const CXMAX :f64 = 1f64;
     const CYMIN :f64 = -1.5f64;
@@ -96,13 +96,13 @@ unsafe fn unsafe_main() {
         for y in 0..Y_LIMIT {
             let (a, b, c, d) = run(CXMIN, CYMIN, SCALEX, SCALEY, x as f64, y as f64);
             let p1 = imgbuf.get_pixel_mut(x, y);
-            *p1 = image::Luma([(15.0*a) as u8]);
+            *p1 = image::Rgb([(85.0*a) as u8, 10*a as u8, 5*a as u8]);
             let p2 = imgbuf.get_pixel_mut(x + 1, y);
-            *p2 = image::Luma([(15.0*b) as u8]);
+            *p2 = image::Rgb([(85.0*b) as u8, 10*b as u8, 5*b as u8]);
             let p3 = imgbuf.get_pixel_mut(x + 2, y);
-            *p3 = image::Luma([(15.0*c) as u8]);
+            *p3 = image::Rgb([(85.0*c) as u8, 10*c as u8, 5*c as u8]);
             let p4 = imgbuf.get_pixel_mut(x + 3, y);
-            *p4 = image::Luma([(15.0*d) as u8]);
+            *p4 = image::Rgb([(85.0*d) as u8, 10*d as u8, 5*d as u8]);
         }
     }
 

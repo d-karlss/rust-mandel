@@ -2,3 +2,5 @@
 perf.data
 out.png
 .idea
+Cargo.lock
+
