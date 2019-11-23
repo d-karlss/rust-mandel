@@ -8,4 +8,4 @@ cargo build --release
 target/release/simd
 
 ## Output 
-out.png
+![screenshot](https://user-images.githubusercontent.com/53612676/69485448-eec77900-0e3f-11ea-9f3d-a2643f634ded.png)
